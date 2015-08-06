@@ -2069,3 +2069,209 @@ Caused by: org.h2.jdbc.JdbcSQLException: La conexión no fue cerrada por la apli
 The connection was not closed by the application and is garbage collected [90018-187]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
 	... 76 more
+08-06 10:11:53 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: Sequence "SEQ_COMISION_ID" not found; SQL statement:
+CREATE TABLE COMISION
+(
+   ID   				DOUBLE     DEFAULT (NEXT VALUE FOR PUBLIC.SEQ_Comision_id) NOT NULL,
+   FECCOMISION 	DATE
+) [90036-187]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.schema.Schema.getSequence(Schema.java:499)
+	at org.h2.command.Parser.readSequence(Parser.java:5304)
+	at org.h2.command.Parser.readTerm(Parser.java:2752)
+	at org.h2.command.Parser.readFactor(Parser.java:2259)
+	at org.h2.command.Parser.readSum(Parser.java:2246)
+	at org.h2.command.Parser.readConcat(Parser.java:2216)
+	at org.h2.command.Parser.readCondition(Parser.java:2066)
+	at org.h2.command.Parser.readAnd(Parser.java:2038)
+	at org.h2.command.Parser.readExpression(Parser.java:2030)
+	at org.h2.command.Parser.readTerm(Parser.java:2829)
+	at org.h2.command.Parser.readFactor(Parser.java:2259)
+	at org.h2.command.Parser.readSum(Parser.java:2246)
+	at org.h2.command.Parser.readConcat(Parser.java:2216)
+	at org.h2.command.Parser.readCondition(Parser.java:2066)
+	at org.h2.command.Parser.readAnd(Parser.java:2038)
+	at org.h2.command.Parser.readExpression(Parser.java:2030)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3881)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5771)
+	at org.h2.command.Parser.parseCreate(Parser.java:4159)
+	at org.h2.command.Parser.parsePrepared(Parser.java:350)
+	at org.h2.command.Parser.parse(Parser.java:305)
+	at org.h2.command.Parser.parse(Parser.java:277)
+	at org.h2.command.Parser.prepareCommand(Parser.java:242)
+	at org.h2.engine.Session.prepareLocal(Session.java:461)
+	at org.h2.engine.Session.prepareCommand(Session.java:403)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1189)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at workbench.sql.commands.DdlCommand.execute(DdlCommand.java:152)
+	at workbench.sql.StatementRunner.runStatement(StatementRunner.java:543)
+	at workbench.gui.sql.SqlPanel.displayResult(SqlPanel.java:3247)
+	at workbench.gui.sql.SqlPanel.runStatement(SqlPanel.java:2101)
+	at workbench.gui.sql.SqlPanel$14.run(SqlPanel.java:2052)
+08-06 10:12:15 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: Column "IDPERSONA" not found; SQL statement:
+CREATE INDEX IX_COMISION
+   ON COMISION (IDPERSONA ASC) [42122-187]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.table.Table.getColumn(Table.java:648)
+	at org.h2.table.IndexColumn.mapColumns(IndexColumn.java:74)
+	at org.h2.command.ddl.CreateIndex.update(CreateIndex.java:93)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:78)
+	at org.h2.command.Command.executeUpdate(Command.java:254)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:184)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at workbench.sql.commands.DdlCommand.execute(DdlCommand.java:152)
+	at workbench.sql.StatementRunner.runStatement(StatementRunner.java:543)
+	at workbench.gui.sql.SqlPanel.displayResult(SqlPanel.java:3247)
+	at workbench.gui.sql.SqlPanel.runStatement(SqlPanel.java:2101)
+	at workbench.gui.sql.SqlPanel$14.run(SqlPanel.java:2052)
+08-06 10:12:31 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: Sequence "SEQ_COMISION_ID" already exists; SQL statement:
+CREATE SEQUENCE SEQ_Comision_id START WITH 1 INCREMENT BY 1 NOCYCLE CACHE 1 [90035-187]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.command.ddl.CreateSequence.update(CreateSequence.java:57)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:78)
+	at org.h2.command.Command.executeUpdate(Command.java:254)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:184)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at workbench.sql.commands.DdlCommand.execute(DdlCommand.java:152)
+	at workbench.sql.StatementRunner.runStatement(StatementRunner.java:543)
+	at workbench.gui.sql.SqlPanel.displayResult(SqlPanel.java:3247)
+	at workbench.gui.sql.SqlPanel.runStatement(SqlPanel.java:2101)
+	at workbench.gui.sql.SqlPanel$14.run(SqlPanel.java:2052)
+08-06 10:12:40 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: Column "ID" not found; SQL statement:
+COMMENT ON COLUMN ABOGADO.ID IS 'Identificador único de la comisión' [42122-187]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.table.Table.getColumn(Table.java:648)
+	at org.h2.command.ddl.SetComment.update(SetComment.java:96)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:78)
+	at org.h2.command.Command.executeUpdate(Command.java:254)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:184)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at workbench.sql.SqlCommand.execute(SqlCommand.java:440)
+	at workbench.sql.StatementRunner.runStatement(StatementRunner.java:543)
+	at workbench.gui.sql.SqlPanel.displayResult(SqlPanel.java:3247)
+	at workbench.gui.sql.SqlPanel.runStatement(SqlPanel.java:2101)
+	at workbench.gui.sql.SqlPanel$14.run(SqlPanel.java:2052)
+08-06 10:16:40 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: Sequence "SEQ_TEXPED_ID" not found; SQL statement:
+CREATE TABLE TEXPEDIENTE
+(
+   ID   			 DOUBLE        DEFAULT (NEXT VALUE FOR PUBLIC.SEQ_TEXPED_id) NOT NULL,
+   DESCRIPCION VARCHAR(100)  NOT NULL
+) [90036-187]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.schema.Schema.getSequence(Schema.java:499)
+	at org.h2.command.Parser.readSequence(Parser.java:5304)
+	at org.h2.command.Parser.readTerm(Parser.java:2752)
+	at org.h2.command.Parser.readFactor(Parser.java:2259)
+	at org.h2.command.Parser.readSum(Parser.java:2246)
+	at org.h2.command.Parser.readConcat(Parser.java:2216)
+	at org.h2.command.Parser.readCondition(Parser.java:2066)
+	at org.h2.command.Parser.readAnd(Parser.java:2038)
+	at org.h2.command.Parser.readExpression(Parser.java:2030)
+	at org.h2.command.Parser.readTerm(Parser.java:2829)
+	at org.h2.command.Parser.readFactor(Parser.java:2259)
+	at org.h2.command.Parser.readSum(Parser.java:2246)
+	at org.h2.command.Parser.readConcat(Parser.java:2216)
+	at org.h2.command.Parser.readCondition(Parser.java:2066)
+	at org.h2.command.Parser.readAnd(Parser.java:2038)
+	at org.h2.command.Parser.readExpression(Parser.java:2030)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3881)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5771)
+	at org.h2.command.Parser.parseCreate(Parser.java:4159)
+	at org.h2.command.Parser.parsePrepared(Parser.java:350)
+	at org.h2.command.Parser.parse(Parser.java:305)
+	at org.h2.command.Parser.parse(Parser.java:277)
+	at org.h2.command.Parser.prepareCommand(Parser.java:242)
+	at org.h2.engine.Session.prepareLocal(Session.java:461)
+	at org.h2.engine.Session.prepareCommand(Session.java:403)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1189)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at workbench.sql.commands.DdlCommand.execute(DdlCommand.java:152)
+	at workbench.sql.StatementRunner.runStatement(StatementRunner.java:543)
+	at workbench.gui.sql.SqlPanel.displayResult(SqlPanel.java:3247)
+	at workbench.gui.sql.SqlPanel.runStatement(SqlPanel.java:2101)
+	at workbench.gui.sql.SqlPanel$14.run(SqlPanel.java:2052)
+08-06 10:17:00 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "COMMENT ON TABLE TEXPEDIENTE IS 'Auxiliar para indicar si el expediente es solicitado por el interesado o por el juzgado'
+COMMENT[*] ON COLUMN TEXPEDIENTE.ID IS 'Identificador único de tipo de asunto'"; SQL statement:
+COMMENT ON TABLE TEXPEDIENTE IS 'Auxiliar para indicar si el expediente es solicitado por el interesado o por el juzgado'
+COMMENT ON COLUMN TEXPEDIENTE.ID IS 'Identificador único de tipo de asunto' [42000-187]
+08-06 10:17:14 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: Column "IDTIPO" not found; SQL statement:
+COMMENT ON COLUMN TEXPEDIENTE.IDTIPO IS 'Naturaleza del juzgado, cada asunto puede ser de un tipo de los del juzgado ' [42122-187]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.table.Table.getColumn(Table.java:648)
+	at org.h2.command.ddl.SetComment.update(SetComment.java:96)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:78)
+	at org.h2.command.Command.executeUpdate(Command.java:254)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:184)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at workbench.sql.SqlCommand.execute(SqlCommand.java:440)
+	at workbench.sql.StatementRunner.runStatement(StatementRunner.java:543)
+	at workbench.gui.sql.SqlPanel.displayResult(SqlPanel.java:3247)
+	at workbench.gui.sql.SqlPanel.runStatement(SqlPanel.java:2101)
+	at workbench.gui.sql.SqlPanel$14.run(SqlPanel.java:2052)
+08-06 10:17:32 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: Table "TEXPEDIENTENTO" not found; SQL statement:
+CREATE INDEX IX_TEXPEDIENTE
+   ON TEXPEDIENTENTO (ID ASC) [42102-187]
+08-06 12:12:29 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: Cannot drop "PUBLIC.SEQ_TEXPED_ID" because "PUBLIC.TEXPEDIENTE" depends on it; SQL statement:
+drop sequence SEQ_TEXPED_id [90107-187]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.engine.Database.removeSchemaObject(Database.java:1801)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:51)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:78)
+	at org.h2.command.Command.executeUpdate(Command.java:254)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:184)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at workbench.sql.commands.DdlCommand.execute(DdlCommand.java:152)
+	at workbench.sql.StatementRunner.runStatement(StatementRunner.java:543)
+	at workbench.gui.sql.SqlPanel.displayResult(SqlPanel.java:3247)
+	at workbench.gui.sql.SqlPanel.runStatement(SqlPanel.java:2101)
+	at workbench.gui.sql.SqlPanel$14.run(SqlPanel.java:2052)
+08-06 12:12:57 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "COMMENT ON TABLE TEXPEDIENTE IS 'Auxiliar para indicar si el expediente es solicitado por el interesado o por el juzgado'
+COMMENT[*] ON COLUMN TEXPEDIENTE.ID IS 'Identificador único de tipo de asunto'"; SQL statement:
+COMMENT ON TABLE TEXPEDIENTE IS 'Auxiliar para indicar si el expediente es solicitado por el interesado o por el juzgado'
+COMMENT ON COLUMN TEXPEDIENTE.ID IS 'Identificador único de tipo de asunto' [42000-187]
+08-06 12:13:13 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: Column "IDTIPO" not found; SQL statement:
+COMMENT ON COLUMN TEXPEDIENTE.IDTIPO IS 'Naturaleza del juzgado, cada asunto puede ser de un tipo de los del juzgado ' [42122-187]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.table.Table.getColumn(Table.java:648)
+	at org.h2.command.ddl.SetComment.update(SetComment.java:96)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:78)
+	at org.h2.command.Command.executeUpdate(Command.java:254)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:184)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at workbench.sql.SqlCommand.execute(SqlCommand.java:440)
+	at workbench.sql.StatementRunner.runStatement(StatementRunner.java:543)
+	at workbench.gui.sql.SqlPanel.displayResult(SqlPanel.java:3247)
+	at workbench.gui.sql.SqlPanel.runStatement(SqlPanel.java:2101)
+	at workbench.gui.sql.SqlPanel$14.run(SqlPanel.java:2052)
+08-06 12:13:42 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: Table "TEXPEDIENTENTO" not found; SQL statement:
+CREATE INDEX IX_TEXPEDIENTE
+   ON TEXPEDIENTENTO (ID ASC) [42102-187]
